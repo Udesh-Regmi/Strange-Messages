@@ -91,14 +91,14 @@ const onSubmit= async (data : z.infer<typeof signUpSchema>) => {
 }
 
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-700 via-gray-900 to-black">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-xl ring-2 ring-indigo-200 ring-opacity-50">
-      <div className="text-center">
+        <div className="flex items-center justify-center min-h-screen bg-slate-200">
+          <div className="w-full max-w-md  p-6 space-y-6 bg-white rounded-lg shadow-md">
+            <div className="text-center">
               <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-5">
                 Join Anonymous Messages
               </h1>
               <p className="mb-3">Signup to enjoy Anonymous Adventure </p>
-       </div>
+            </div>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -121,7 +121,7 @@ const onSubmit= async (data : z.infer<typeof signUpSchema>) => {
                         isCheckingUsername && <Loader2 className="animate-spin"/> 
                       }
                         <p className={`text-sm ${usernameMessage ==='username is unique' ? 'text-green-500':'text-red-500'}`}>
-                            ;..... {usernameMessage}
+                            test {usernameMessage}
                         </p>
                       
                       
@@ -161,7 +161,7 @@ const onSubmit= async (data : z.infer<typeof signUpSchema>) => {
                       )}
                       />
                     
-                    <Button type="submit" disabled={isSubmitting} >
+                    <Button type="submit" disabled={isSubmitting}>
                        {
                         isSubmitting ? (
                           <>
