@@ -9,8 +9,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <div className="user-container">
+      {/* Dashboard-specific layout */}
+      {children}
+    </div>
   )
 }

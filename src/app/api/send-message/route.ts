@@ -4,7 +4,6 @@ import { Message } from "@/model/User";
 
 
 export  async function POST(request:Request) {
-
     await dbConnect()
    const {username, content}=  await request.json()
 
@@ -46,7 +45,7 @@ export  async function POST(request:Request) {
           message: `Message sent successfully `,
         },
         {
-          status: 404,
+          status: 201,
         }
       );
    } catch (error) {

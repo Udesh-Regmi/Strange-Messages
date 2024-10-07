@@ -1,0 +1,42 @@
+[
+    { 
+        "id": "item-1", 
+        "question": "Is it free to use?", 
+        "answer": "Yes. It is absolutely free to use." 
+    },
+    { 
+        "id": "item-2", 
+        "question": "Does it save our data?", 
+        "answer": "No, this platform is only made for entertainment purposes, and it does not store any user data." 
+    },
+    { 
+        "id": "item-3", 
+        "question": "Did you use a third-party library for this?", 
+        "answer": "No, we built everything from scratch and listed all the libraries used below." 
+    },
+    { 
+        "id": "item-4", 
+        "question": "What packages were used in the website building process?", 
+        "answer": "These are the packages: <ul class=\"list-disc list-inside\"><li>Next.js</li><li>React Hook Form</li><li>Axios</li><li>MongoDB and Mongoose</li><li>Tailwind CSS</li><li>Next Auth</li></ul>" 
+    },
+    { 
+        "id": "item-5", 
+        "question": "How secure is my data on this platform?", 
+        "answer": "Your data is safe with us! We prioritize user privacy and do not store any personal information." 
+    },
+    { 
+        "id": "item-6", 
+        "question": "Can I report inappropriate messages?", 
+        "answer": "Yes, you can report any inappropriate messages through the designated reporting feature on the platform. or email us on code.udesh@gmail.com" 
+    },
+    { 
+        "id": "item-7", 
+        "question": "Is there a mobile app version?", 
+        "answer": "Currently, there is no mobile app, but the website is fully responsive and can be accessed on mobile devices." 
+    },
+    { 
+        "id": "item-8", 
+        "question": "How can I contact support?", 
+        "answer": "You can contact support via our contact page or by emailing code.udesh@gmail.com" 
+    }
+]

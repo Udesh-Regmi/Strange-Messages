@@ -33,7 +33,9 @@ const onSubmit= async (data : z.infer<typeof signInSchema>) => {
    const result= await signIn('credentials',{
     redirect: false,
     identifier: data.identifier,
-    password: data.password
+    password: data.password,
+    callbackUrl: '/dashboard', // Specify the callback URL
+
    })
    if(result?.error){
     toast({
@@ -43,8 +45,9 @@ const onSubmit= async (data : z.infer<typeof signInSchema>) => {
     })
    }
   if(result?.url){
-    router.replace(`/dashboard`)
+    router.push(result.url); // Use the returned URL for redirection
   }
+  // router.push(`/`)
 }
 
     return (
@@ -66,9 +69,9 @@ const onSubmit= async (data : z.infer<typeof signInSchema>) => {
                       name="identifier"
                       render={({ field }) => (
                       <FormItem>
-                      <FormLabel>Email / Username</FormLabel>
+                      <FormLabel>Email</FormLabel>
                       <FormControl>
-                      <Input placeholder="Email / Username" 
+                      <Input placeholder="Email" 
                       {...field}                 
                       />
                       </FormControl>
