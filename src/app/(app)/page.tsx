@@ -33,11 +33,11 @@ import { Card } from '@/components/ui/card';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import Image from 'next/image';
-import { Github, Instagram, Linkedin } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-dvh bg-black text-white">
+    <div className="flex flex-col bg-blue-900 text-white">
       <main className="flex-grow flex flex-col items-center justify-center p-4">
         <HoverCard>
           <HoverCardTrigger asChild>
@@ -161,7 +161,7 @@ const HomePage = () => {
                 </Label>
                 <div className="col-span-3 flex items-center space-x-4">
                     <a href="mailto:code.udesh@gmail.com" target="_blank" rel="noopener noreferrer">
-                        <i className="fa fa-envelope text-xl text-blue-400 hover:text-white"></i>
+                   <Mail/>
                     </a>
                     <a href="https://github.com/Udesh-Regmi" target="_blank" rel="noopener noreferrer">
                     <Github/>            

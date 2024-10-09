@@ -1,205 +1,116 @@
-# ✉️ Anonymous Message Sending App
+# 🎭 Anonymous Message Sending App
 
+![Next.js](https://img.shields.io/badge/Next.js-13.0+-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-18.0+-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4+-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-Welcome to the Anonymous Message Sending App! 
------------------------------------------------
+Welcome to the Anonymous Message Sending App! 🚀 A secure and fun platform built with Next.js where users can create accounts, share unique URLs, and receive anonymous feedback. Perfect for gathering genuine thoughts without revealing identities. 🤫
 
-A fun and secure platform built with Next.js where users can create accounts, share their unique URLs, and receive anonymous feedback from others. Perfect for gathering genuine thoughts without the pressure of revealing identities. 🤫
+## 🌟 Features
 
----
+- **🎭 Anonymous Messaging**: Send and receive messages without revealing your identity.
+- **🔐 User Authentication**: Secure sign-up and login using NextAuth.js.
+- **💅 Beautiful UI**: Styled with Tailwind CSS and shadcn UI for a modern, responsive design.
+- **🛡️ Secure Data Handling**: Passwords hashed with bcryptjs, data managed with MongoDB and Mongoose.
+- **✅ Form Validation**: Robust validation using Zod to ensure data integrity.
+- **📧 Email Notifications**: Receive notifications via Resend API for new messages.
+- **🔍 TypeScript Support**: Enhanced development experience with full TypeScript support.
+- **🚀 Server-Side Rendering**: Utilizes Next.js for optimal performance and SEO.
+- **🎨 Customizable UI Components**: Leverages Radix UI primitives for accessible, customizable components.
+- **📱 Responsive Design**: Looks great on desktop and mobile devices.
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Next.js** (v14.2.14): React framework for production
+- **React** (v18+): JavaScript library for building user interfaces
+- **Tailwind CSS** (v3.4.1): Utility-first CSS framework
+- **shadcn UI**: Customizable UI components built on Radix UI
+- **Embla Carousel**: For interactive carousels and sliders
+- **Lucide React**: Beautiful and consistent icon set
+
+### Backend
+- **NextAuth.js** (v4.24.8): Authentication for Next.js
+- **MongoDB** (v6.9.0): NoSQL database
+- **Mongoose** (v8.7.0): MongoDB object modeling
+- **bcryptjs** (v2.4.3): Library for hashing passwords
+- **Zod** (v3.23.8): TypeScript-first schema validation
+
+### API Integration
+- **Axios** (v1.7.7): Promise-based HTTP client
+- **@google/generative-ai** (v0.21.0): Google's Generative AI integration
+
+### Email
+- **React Email** (v3.0.1): Components for building email templates
+- **Resend** (v4.0.0): Email delivery service
 
 ## 🚀 Getting Started
 
-Follow these steps to set up the project locally:
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Udesh-Regmi/Anonymous_Message_NextJS
-```
-
-### 2. Navigate to the Project Directory
-
-```bash
-cd anonymous_message
-```
-
-### 3. Install Dependencies
-
-Choose your preferred package manager:
-
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-
-```
-
-### 4. Configure Environment Variables
-
-Create a `.env.local` file in the root directory and add the necessary environment variables. Example:
-
-```env
-MONGODB_URI=your_mongodb_connection_string
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_nextauth_secret
-RESEND_API_KEY=your_resend_api_key
-```
-
-### 5. Run the Development Server
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
-
----
-
-## 💡 Features
-
-- **Anonymous Messaging**: Send and receive messages without revealing your identity.
-- **User Authentication**: Secure sign-up and login using NextAuth.js.
-- **Beautiful UI**: Styled with Tailwind CSS and [shadcn UI](https://ui.shadcn.com/) for a modern and responsive design.
-- **Secure Data Handling**: Passwords hashed with bcryptjs and data managed with MongoDB and Mongoose.
-- **Form Validation**: Robust validation using Zod to ensure data integrity.
-- **Email Notifications**: Send notifications via Resend API when new messages are received.
-- **TypeScript Support**: Enhanced development experience with TypeScript for type safety.
-
----
-
-## 🔧 Tech Stack
-
-### **Frontend**
-
-- **[Next.js](https://nextjs.org/)**: The React framework for production.
-- **[React](https://reactjs.org/)**: A JavaScript library for building user interfaces.
-- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for rapid UI development.
-- **[shadcn UI](https://ui.shadcn.com/)**: A set of accessible and customizable UI components.
-- **[React Email](https://react.email/)**: Components for building responsive email templates.
-
-### **Backend**
-
-- **[NextAuth.js](https://next-auth.js.org/)**: Authentication for Next.js applications.
-- **[MongoDB](https://www.mongodb.com/)**: A NoSQL database for storing user data and messages.
-- **[Mongoose](https://mongoosejs.com/)**: Elegant MongoDB object modeling for Node.js.
-- **[bcryptjs](https://github.com/dcodeIO/bcrypt.js)**: Library to hash passwords.
-- **[Zod](https://zod.dev/)**: TypeScript-first schema validation.
-- **[Resend](https://resend.com/)**: Reliable email delivery service.
-
-### **Development Tools**
-
-- **[TypeScript](https://www.typescriptlang.org/)**: Typed superset of JavaScript.
-- **[ESLint](https://eslint.org/)**: Pluggable linting utility for JavaScript and TypeScript.
-- **[PostCSS](https://postcss.org/)**: Tool for transforming CSS with JavaScript plugins.
-
----
-
-## 📸 Screenshots
-
-### 🌟 Home Page
-![Home Page Screenshot](https://via.placeholder.com/800x400?text=Home+Page)
-
-### ✉️ Send Message
-![Send Message Screenshot](https://via.placeholder.com/800x400?text=Send+Message)
-
-### 📬 Inbox
-![Inbox Screenshot](https://via.placeholder.com/800x400?text=Inbox)
-
-*Replace the placeholder images with actual screenshots of your app.*
-
----
-
-## 🔗 Live Demo
-
-The app is not hosted yet, but stay tuned! Once deployed, you can access the live project here:
-
-🔗 [Live Project](https://localhost:3000)
-
----
-
-## 🛠️ Installation & Setup
-
 1. **Clone the repository:**
-
    ```bash
-   git clone https://github.com/your-username/anonymous_message.git
+   git clone https://github.com/Udesh-Regmi/Anonymous_Message_NextJS.git
+   cd Anonymous_Message_NextJS
    ```
 
-2. **Navigate to the project directory:**
-
-   ```bash
-   cd anonymous_message
-   ```
-
-3. **Install dependencies:**
-
+2. **Install dependencies:**
    ```bash
    npm install
    # or
    yarn install
    # or
    pnpm install
-   # or
-   bun install
    ```
 
-4. **Set up environment variables:**
+3. **Set up environment variables:**
+   Create a `.env.local` file in the root directory:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your_nextauth_secret
+   RESEND_API_KEY=your_resend_api_key
+   GOOGLE_AI_API_KEY=your_google_ai_api_key
+   ```
 
-   Create a `.env.local` file and add the required variables as shown in the [Getting Started](#getting-started) section.
-
-5. **Run the development server:**
-
+4. **Run the development server:**
    ```bash
    npm run dev
    # or
    yarn dev
    # or
    pnpm dev
-   # or
-   bun dev
    ```
 
-6. **Open the app in your browser:**
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the app in action!
 
-   Navigate to [http://localhost:3000](http://localhost:3000) to see the result.
+## 📸 Screenshots
 
----
+### 🏠 Home Page
+![Home Page](https://via.placeholder.com/800x400?text=Home+Page)
 
-## ✨ Contributing
+### 📝 Send Message
+![Send Message](https://via.placeholder.com/800x400?text=Send+Message)
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+### 📥 Inbox
+![Inbox](https://via.placeholder.com/800x400?text=Inbox)
 
-1. **Fork the Project**
+## 🤝 Contributing
 
-2. **Create your Feature Branch**
+We welcome contributions! Here's how you can help:
 
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a pull request
 
-3. **Commit your Changes**
+Please read our [Contributing Guide](CONTRIBUTING.md) for more details.
 
-   ```bash
-   git commit -m "Add some AmazingFeature"
-   ```
+## 📜 License
 
-4. **Push to the Branch**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-
-5. **Open a Pull Request**
-
----
 ## 🙏 Acknowledgements
 
 - [Next.js](https://nextjs.org/)
@@ -209,15 +120,16 @@ Contributions are what make the open-source community such an amazing place to l
 - [NextAuth.js](https://next-auth.js.org/)
 - [MongoDB](https://www.mongodb.com/)
 - [Resend](https://resend.com/)
-- [Zod](https://zod.dev/)
+- [Google AI](https://ai.google.dev/)
 
----
 
-**⭐ If you like this project, please give it a star! ⭐**
 
 
 ---
 
+⭐ Star this repo if you find it helpful! Happy coding! 🚀
+
+---
 ## 📞 Contact Me
 
 I'm always open to connecting, collaborating, and hearing feedback! Feel free to reach out to me on any of the following platforms:

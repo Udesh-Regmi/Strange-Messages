@@ -1,11 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
-// Define types for the incoming request and expected response
-interface RequestBody {
-    body: string; // Input body text
-}
-
 // Define a type for error responses
 interface ErrorResponse {
     error: string; // Error message
@@ -15,14 +10,9 @@ interface ErrorResponse {
 
 // Utility function to handle errors centrally
 function handleError(error: unknown): ErrorResponse {
-    if (error instanceof Error && 'response' in error) {
-        const apiError = error as any;
-        const status = apiError.response?.status || 500;
-        const message = apiError.response?.statusText || "API Error occurred";
-        const details = apiError.response?.data?.message || "No additional information";
-
-        console.error(`API Error - Status: ${status}, Message: ${message}, Details: ${details}`);
-        return { error: message, status, details };
+    if (error instanceof Error) {
+        console.error("Error:", error.message);
+        return { error: error.message, status: 500 };
     } else {
         console.error("Unknown Error:", error);
         return { error: "An unexpected error occurred", status: 500 };
@@ -35,48 +25,50 @@ export async function POST(req: Request): Promise<NextResponse> {
         // Check for the API key in environment variables
         const apiKey = process.env.GOOGLE_GEMINI_API_KEY;
         if (!apiKey) {
-            throw new Error("Missing Google Gemini API key");
+            console.error("Missing Google Gemini API key");
+            return NextResponse.json(
+                { error: "Internal Server Error" },
+                { status: 500 }
+            );
         }
-
+    
         // Initialize the Google Generative AI instance
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-        // Parse the request body and validate input
-        const data: RequestBody = await req.json();
-        if (!data.body || typeof data.body !== 'string') {
+    
+        // Hardcoded prompt
+        const prompt: string = `
+          Generate a list of three thought-provoking and personal questions, separated by '||', that invite users to reflect on their personal experiences and insights. These questions are meant for an anonymous social messaging platform.The questions should cater to a wide and diverse audience, encouraging them to express emotions, values, or lessons they've learned in a way that feels anything, non-judgmental,judgmental. Avoid any filteration that might make users uncomfortable or hesitant to respond. Make sure to use plain english not other ascii values donot include numbers at the beginning of the sentence also donot provide more or less questions. Also make sure that the questions are unique each time
+        `;
+    
+        const result = await model.generateContent(prompt);
+    
+        // Check if the response contains candidates and extract the first candidate's text
+        const candidates = result.response?.candidates;
+        if (!candidates || candidates.length === 0 || !candidates[0]?.content) {
+            console.error("No valid candidates found in the response.");
             return NextResponse.json(
-                { error: "Invalid input: 'body' field is required and must be a string" },
-                { status: 400 }
+                { error: "Failed to generate content" },
+                { status: 500 }
             );
         }
+    
+        const output = candidates[0].content;
+        
+        const parts  = output?.parts[0]?.text; 
+        const questionsArray = parts.split("||").map(q => q.trim()); 
 
-        // Define the prompt for generating friendly questions
-        const prompt: string = `
-            As an AI, create a list of three open-ended and engaging questions that encourage users to share personal insights and experiences. Format the questions as a single string, with each question separated by '||'. These questions are designed for an anonymous social messaging platform, like Qooh.me, and should be suitable for a diverse audience. Aim for universal themes that foster friendly interaction and self-reflection without delving into sensitive topics. For example, structure the output like this: 'What’s a personal challenge you’ve overcome, and what did you learn from it? || How has a specific experience shaped who you are today? || If you could give advice to your younger self, what would it be?'. Ensure the questions are intriguing, encourage curiosity, and contribute to a positive and welcoming conversational environment.
-`;
-
-        // Generate content using the model
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const output: string = await response.text();
-
-        // Format the output into a friendly text-stream format
-        const friendlyOutput: string = output
-            .split('||') // Split the output string by '||'
-            .map((question, index) => `${index + 1}. ${question.trim()}`) // Add numbering and trim whitespace
-            .join('\n'); 
-
-        // Return the successful response with formatted output
-        return NextResponse.json({ output: friendlyOutput });
-
+        console.log("Friendly output of Google Gemini:", questionsArray);
+    
+        return NextResponse.json({ output: questionsArray });
+        
     } catch (error) {
-        const { error: errorMsg, status, details } = handleError(error);
+      const { error: errorMsg, status } = handleError(error);
 
-        // Return the error response with a status code
-        return NextResponse.json(
-            { error: errorMsg, details },
-            { status }
-        );
-    }
+      // Return the error response with a status code
+      return NextResponse.json(
+          { error: errorMsg },
+          { status }
+      );
+  }
 }

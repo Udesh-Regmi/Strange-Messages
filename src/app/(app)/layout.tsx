@@ -9,7 +9,7 @@ export const metadata = {
     children: React.ReactNode
   }) {
     return (
-      <div className="app-route bg-black text-white">
+      <div className="min-h-screen flex flex-col align-middle justify-center  app-route bg-gradient-to-r from-zinc-500 to-zinc-200 bg-opacity-50 backdrop-blur-lg text-white rounded-lg shadow-lg">
         {children}
   
       </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import MessageCard from '@/components/MessageCard';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -16,117 +16,107 @@ import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const DashboardPage = () =>
-     {
-    const [messages, setMessages] = useState<Message[]>([])
-    const [isloading, setIsLoading] = useState(false)
-    const [isSwitchLoading, setIsSwitchLoading] = useState(false)
-    const { toast } = useToast()
+const DashboardPage = () => {
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSwitchLoading, setIsSwitchLoading] = useState(false);
+    const { toast } = useToast();
+    
     const handleDeleteMessage = (messageId: string) => {
-        setMessages(messages.filter((message) => message._id !== messageId))
-    }
+        setMessages(messages.filter((message) => message._id !== messageId));
+    };
 
-    const { data: session } = useSession()
+    const { data: session } = useSession();
     const form = useForm({
         resolver: zodResolver(AcceptMessageSchema)
-    })
+    });
     const { register, watch, setValue } = form;
-    const acceptMessages = watch('acceptMessages')
+    const acceptMessages = watch('acceptMessages');
+
     const fetchAcceptMessage = useCallback(async () => {
-        setIsSwitchLoading(true)
+        setIsSwitchLoading(true);
         try {
-            const response = await axios.get<ApiResponse>(`/api/accept-message`)
-            setValue('acceptMessages', response.data.isAcceptingMessage)
-
-
+            const response = await axios.get<ApiResponse>(`/api/accept-message`);
+            setValue('acceptMessages', response.data.isAcceptingMessage);
         } catch (error) {
-            const AxiosError = error as AxiosError<ApiResponse>
+            const AxiosError = error as AxiosError<ApiResponse>;
             toast({
                 title: `Error `,
                 description: AxiosError.response?.data.message || `Error while fetching messages`,
                 variant: 'destructive'
-            })
-
+            });
         } finally {
-            setIsSwitchLoading(false)
+            setIsSwitchLoading(false);
         }
+    }, [setValue]);
 
-
-    }, [setValue])
     const fetchMessages = useCallback(async (refresh: boolean = false) => {
-        setIsSwitchLoading(false)
-        setIsLoading(true)
+        setIsSwitchLoading(false);
+        setIsLoading(true);
         try {
-            const response = await axios.get<ApiResponse>(`/api/get-messages`)
-            setMessages(response.data.messages || [])
+            const response = await axios.get<ApiResponse>(`/api/get-messages`);
+            setMessages(response.data.messages || []);
             if (refresh) {
                 toast({
                     title: `Refreshed Messages`,
                     description: `Showing latest messages`
-                })
+                });
             }
         } catch (error) {
-            const AxiosError = error as AxiosError<ApiResponse>
+            const AxiosError = error as AxiosError<ApiResponse>;
             toast({
                 title: `Error `,
                 description: AxiosError.response?.data.message || `Error while fetching messages`,
                 variant: 'destructive'
-            })
-
+            });
         } finally {
-            setIsLoading(false)
-            setIsSwitchLoading(false)
+            setIsLoading(false);
+            setIsSwitchLoading(false);
         }
+    }, [setIsLoading, setMessages]);
 
-
-    }, [setIsLoading, setMessages])
     useEffect(() => {
-        if (!session || !session.user) return
-        fetchMessages()
-        fetchAcceptMessage()
+        if (!session || !session.user) return;
+        fetchMessages();
+        fetchAcceptMessage();
+    }, [session, setValue, fetchAcceptMessage, fetchMessages]);
 
-    }, [session, setValue, fetchAcceptMessage, fetchMessages])
-
-    //handle switch change
     const handleSwitchChange = async () => {
         try {
             const response = await axios.post<ApiResponse>(`/api/accept-message`, {
                 acceptMessages: !acceptMessages,
-            })
-            setValue('acceptMessages', !acceptMessages)
+            });
+            setValue('acceptMessages', !acceptMessages);
             toast({
                 title: response.data.message,
                 variant: 'default'
-            })
-
+            });
         } catch (error) {
-            const AxiosError = error as AxiosError<ApiResponse>
+            const AxiosError = error as AxiosError<ApiResponse>;
             toast({
                 title: `Error `,
                 description: AxiosError.response?.data.message || `Failed while fetching messages`,
                 variant: 'destructive'
-            })
-
+            });
         }
-    }
+    };
 
-    const { username } = session?.user || {} as User
-    const profileUrl = `${window.location.protocol}//${window.location.host}/user/${username}`
+    const { username } = session?.user || {} as User;
+    const profileUrl = `${window.location.protocol}//${window.location.host}/user/${username}`;
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(profileUrl)
+        navigator.clipboard.writeText(profileUrl);
         toast({
             title: `Url Copied`,
-            description: `Url  copied to clipboard`
-        })
-
-    }
+            description: `Url copied to clipboard`
+        });
+    };
 
     if (!session || !session.user) {
         return (
-            <div className="bg-black text-white flex items-center justify-center h-screen">
-                <div>
-                    Please Login to Proceed!
+            <div className="bg-gray-800 text-white flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <h2 className="text-xl font-semibold mb-2">Please Login to Proceed!</h2>
                     <Link href='/sign-up'>
                         <Button className="ml-2">Sign Up</Button>
                     </Link>
@@ -134,23 +124,24 @@ const DashboardPage = () =>
             </div>
         );
     }
+
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-gray-800 text-white rounded-lg shadow-lg">
+        <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-300 to-blue-600 bg-opacity-40 backdrop-blur-lg text-white rounded-lg shadow-lg min-w-[90vw] min-h-screen">
             <header className="flex items-center justify-between mb-6">
                 <div className="flex flex-col">
-                    <h1 className="text-3xl font-bold">Dashboard</h1>
-                    <div className="userinfo text-xl">Welcome back, {username}</div>
+                    <h1 className="text-4xl font-bold">Dashboard</h1>
+                    <div className="userinfo text-xl">Welcome back, {username}!</div>
                 </div>
-                <div className="copybutton-info">
-                    <h3 className="text-lg">Copy the URL to get anonymous messages.</h3>
-                    <div className="w-full flex items-center flex-grow justify-between mt-2">
+                <div className="copybutton-info text-center">
+                    <h3 className="text-lg">Copy the URL to receive anonymous messages:</h3>
+                    <div className="flex items-center mt-2">
                         <input
                             type="text"
                             value={profileUrl}
                             disabled
                             className='input input-bordered w-full p-4 bg-gray-700 text-white border-gray-600 rounded-md shadow-sm'
                         />
-                        <Button onClick={copyToClipboard} className="ml-2 bg-blue-600 hover:bg-blue-700 transition duration-300">
+                        <Button variant='outline' onClick={copyToClipboard} className="  ml-2 bg-blue-600 hover:bg-blue-700 transition duration-300">
                             Copy
                         </Button>
                     </div>
@@ -158,7 +149,7 @@ const DashboardPage = () =>
             </header>
             <Separator className="mb-6 border-gray-600" />
             
-            <div className="mb-5 flex items-center">
+            <div className="flex items-center mb-5">
                 <Switch
                     {...register('acceptMessages')}
                     checked={acceptMessages}
@@ -166,8 +157,8 @@ const DashboardPage = () =>
                     disabled={isSwitchLoading}
                     className="bg-gray-700 border-gray-600"
                 />
-                <span className='m-5'>
-                    Accept Messages {acceptMessages ? 'On' : 'Off'}
+                <span className='m-5 text-lg'>
+                    Accept Messages: <span className={`${acceptMessages ? 'text-green-400' : 'text-red-400'}`}>{acceptMessages ? 'On' : 'Off'}</span>
                 </span>
             </div>
 
@@ -181,11 +172,12 @@ const DashboardPage = () =>
                     fetchMessages(true);
                 }}
             >
-                {isloading ? (
+                {isLoading ? (
                     <Loader2 className='animate-spin w-4 h-4' />
                 ) : (
-                    <RefreshCcw className='w-4 h-4' />
+                    <RefreshCcw className='w-4 h-4' /> 
                 )}
+                Refresh Messages
             </Button>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
@@ -196,17 +188,16 @@ const DashboardPage = () =>
                                 key={message._id}
                                 message={message}
                                 onMessageDelete={handleDeleteMessage}
-                                className="bg-gray-700 p-4 rounded-lg shadow-md transition-transform transform hover:scale-[1.02]"
+                                className="bg-gray-700 p-4 rounded-lg shadow-md transition-transform transform hover:scale-105"
                             />
                         ))
                     ) : (
-                        <p>No messages for you to display.</p>
+                        <p className="text-center text-gray-300">No messages for you to display.</p>
                     )
                 }
             </div>
         </div>
     );
-
 };
 
 export default DashboardPage;

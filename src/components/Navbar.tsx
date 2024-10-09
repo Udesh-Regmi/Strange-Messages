@@ -31,6 +31,12 @@ const NavigationBar = () => {
       <Link href="/dashboard" className="text-sm font-medium transition-colors hover:text-gray-300">
         Dashboard
       </Link>
+      <Link href="/feed" className="text-sm font-medium transition-colors hover:text-gray-300">
+        Feed
+      </Link>
+      <Link href="/buy-me-coffee" className="text-sm font-medium transition-colors hover:text-gray-300">
+        Buy Coffee
+      </Link>
     </>
   );
 
