@@ -20,7 +20,7 @@ function handleError(error: unknown): ErrorResponse {
 }
 
 // POST handler function
-export async function POST(req: Request): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
     try {
         // Check for the API key in environment variables
         const apiKey = process.env.GOOGLE_GEMINI_API_KEY;
@@ -58,7 +58,6 @@ export async function POST(req: Request): Promise<NextResponse> {
         const parts  = output?.parts[0]?.text; 
         const questionsArray = parts.split("||").map(q => q.trim()); 
 
-        console.log("Friendly output of Google Gemini:", questionsArray);
     
         return NextResponse.json({ output: questionsArray });
         

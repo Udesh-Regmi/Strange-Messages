@@ -15,7 +15,7 @@ import { signIn } from "next-auth/react"
 
 
 
-const signInPage = () => {
+const SignInPage = () => {
   const { toast } = useToast()
   const router = useRouter()
 
@@ -34,7 +34,7 @@ const onSubmit= async (data : z.infer<typeof signInSchema>) => {
     redirect: false,
     identifier: data.identifier,
     password: data.password,
-    callbackUrl: '/dashboard', // Specify the callback URL
+    callbackUrl: '/', 
 
    })
    if(result?.error){
@@ -112,4 +112,4 @@ const onSubmit= async (data : z.infer<typeof signInSchema>) => {
     );
 };
 
-export default signInPage; 
+export default SignInPage; 

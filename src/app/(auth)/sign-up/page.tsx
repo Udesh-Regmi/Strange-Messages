@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button"
 
 
 
-const signUpPage = () => {
+const SignUpPage = () => {
   const [username, setusername] = useState('')
   const [usernameMessage, setusernameMessage] = useState('')
   const [isCheckingUsername, setisCheckingUsername]= useState(false)
@@ -77,7 +77,7 @@ const onSubmit= async (data : z.infer<typeof signUpSchema>) => {
   } catch (error) {
     console.error(`Error in signing user ${error}`)
     const axiosError= error as AxiosError<ApiResponse>
-    let errorMessage = axiosError.response?.data.message
+    const errorMessage = axiosError.response?.data.message
 
     toast({
       title: `Signup failed `, 
@@ -183,4 +183,4 @@ const onSubmit= async (data : z.infer<typeof signUpSchema>) => {
     );
 };
 
-export default signUpPage; 
+export default SignUpPage; 
