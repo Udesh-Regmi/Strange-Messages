@@ -1,71 +1,71 @@
+import { NextRequest, NextResponse } from "next/server"; // Import NextRequest
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import { z } from "zod";
 import { usernameValidation } from "@/schemas/signUpSchema";
 
-const usernameQuerySchema = z.object({
-    username: usernameValidation, 
-})
-export async function GET(request:Request) {
+// Validation schema
+const usernameBodySchema = z.object({
+    username: usernameValidation,
+});
 
-    await dbConnect()
+export async function POST(req: NextRequest) {
+    await dbConnect(); 
 
     try {
-        const {searchParams} = new URL(request.url); 
-        const queryParams = {
-            username: searchParams.get('username')
-        } 
-        //validation with Zod
-     const result= usernameQuerySchema.safeParse(queryParams)
-     console.log(result);///   Checking TODO  : Remove
+        // Parse the request body
+        const body = await req.json();
 
-     if(!result.success){
-        const usernameErrors = result.error.format().username?._errors || []
+        // Zod validation
+        const result = usernameBodySchema.safeParse(body);
 
-        return Response.json({
-            success: false , 
-            message : usernameErrors.length>0 ? usernameErrors.join(', ') : "Invalid query Parameters"
-        }, {
-            status : 400,
-        })
+        if (!result.success) {
+            const usernameErrors = result.error.format().username?._errors || [];
 
-     }
-     const { username } = result.data
-
-   const existingVerifiedUsername=  await  UserModel.findOne({
-        username , 
-        isVerified : true
-     })
-     if(existingVerifiedUsername){
-        return Response.json({
-            success: false , 
-            message : "username is already taken "
-        }, {
-            status : 405,
-        })
-
-     }
-     return Response.json({
-        success: true , 
-        message : "username is unique"
-    }, {
-        status : 200,
-    })
-     
-        
-    } catch (error) {
-        console.error(`Error checking username ${error}`)
-        return Response.json({
-            success: false, 
-            message : "Error checking username", 
-
-        }, 
-        {
-            status : 400,
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: usernameErrors.length > 0 ? usernameErrors.join(', ') : "Invalid request body",
+                },
+                { status: 400 }
+            );
         }
-    )
-        
-    }
-    
-}
 
+        const { username } = result.data;
+
+        // Check if the username exists and is verified
+        const existingVerifiedUsername = await UserModel.findOne({
+            username,
+            isVerified: true,
+        });
+
+        if (existingVerifiedUsername) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Username is already taken",
+                },
+                { status: 409 } // Use 409 Conflict for existing username
+            );
+        }
+
+        // Username is unique
+        return NextResponse.json(
+            {
+                success: true,
+                message: "Username is unique",
+            },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error(`Error checking username: ${error}`);
+
+        return NextResponse.json(
+            {
+                success: false,
+                message: "Error checking username",
+            },
+            { status: 500 }  // Change to 500 to represent server error
+        );
+    }
+}
