@@ -9,11 +9,12 @@ export async function POST(request: Request) {
   const session = await getServerSession(authOptions);
   const user: User = session?.user as User;
 
+  // Check if session is valid
   if (!session || !session.user) {
     return Response.json(
       {
         success: false,
-        message: `Not Authenticated`,
+        message: "Not Authenticated",
       },
       {
         status: 401,
@@ -22,47 +23,50 @@ export async function POST(request: Request) {
   }
 
   const userId = user._id;
+
+  // Parse the request body
   const { acceptMessages } = await request.json();
 
+  // Log for debugging
+
+
   try {
+    // Update user acceptance status
     const updatedUser = await UserModel.findByIdAndUpdate(
       userId,
-      {
-        isAcceptingMessage: acceptMessages,
-      },
-      {
-        new: true,
-      }
+      { isAcceptingMessages: acceptMessages },
+      // { new: true }
     );
+
+    // Handle case where the user is not found or update fails
     if (!updatedUser) {
       return Response.json(
         {
           success: false,
-          message: `Failed to update to the user status to update message`,
+          message: "User not found or failed to update acceptance status",
         },
         {
-          status: 401,
+          status: 404,
         }
       );
     }
+
     return Response.json(
       {
         success: true,
-        message: `Message Acceptance status updated successfully. `,
+        message: "Message Acceptance status updated successfully.",
         updatedUser,
       },
       {
-        status: 201,
+        status: 200,
       }
     );
   } catch (error) {
-    console.error(
-      `Failed to update to the user status to accept  messages ${error}`
-    );
+    console.error(`Error updating message acceptance status: ${error}`);
     return Response.json(
       {
         success: false,
-        message: `Failed to update to the user status to accept  messages`,
+        message: "Failed to update message acceptance status",
       },
       {
         status: 500,
@@ -76,11 +80,12 @@ export async function GET() {
   const session = await getServerSession(authOptions);
   const user: User = session?.user as User;
 
+  // Check if session is valid
   if (!session || !session.user) {
     return Response.json(
       {
         success: false,
-        message: `Not Authenticated`,
+        message: "Not Authenticated",
       },
       {
         status: 401,
@@ -89,34 +94,37 @@ export async function GET() {
   }
 
   const userId = user._id;
+
   try {
+    // Retrieve the user information
     const foundUser = await UserModel.findById(userId);
     if (!foundUser) {
       return Response.json(
         {
           success: false,
-          message: `User not found`,
+          message: "User not found",
         },
         {
           status: 404,
         }
       );
     }
+
     return Response.json(
       {
         success: true,
-        isAcceptingMessage: foundUser.isAcceptingMessage,
+        isAcceptingMessages: foundUser.isAcceptingMessages,
       },
       {
-        status: 201,
+        status: 200,
       }
     );
   } catch (error) {
-    console.error(`Failed to update to the user status to accept  messages ${error}`);
+    console.error(`Error retrieving message acceptance status: ${error}`);
     return Response.json(
       {
         success: false,
-        message: `Error in getting message status`,
+        message: "Error in getting message status",
       },
       {
         status: 500,

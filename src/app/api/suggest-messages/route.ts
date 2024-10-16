@@ -52,11 +52,10 @@ export async function POST(): Promise<NextResponse> {
                 { status: 500 }
             );
         }
-    
         const output = candidates[0].content;
         
         const parts  = output?.parts[0]?.text; 
-        const questionsArray = parts.split("||").map(q => q.trim()); 
+        const questionsArray = parts?.split("||").map(q => q.trim()); 
 
     
         return NextResponse.json({ output: questionsArray });

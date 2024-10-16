@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -121,12 +121,11 @@ const DynamicUser: React.FC<DynamicUserProps> = ({ params }) => {
 
         form.reset();
       } catch (error) {
-        const axiosError = error as AxiosError;
 
         console.error(`Error sending message ${error}`)
         toast({
           title: "Error",
-          description: axiosError.response?.data.message || "Failed to send message",
+          description:  "Failed to send message",
           variant: "destructive",
         });
       } finally {

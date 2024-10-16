@@ -22,7 +22,7 @@ import { ApiResponse } from "@/types/ApiResponse";
 type MessageCardProps = {
     message: Message;
     onMessageDelete: (messageId: string) => void;
-}
+};
 
 const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
     const { toast } = useToast();
@@ -31,11 +31,12 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
         try {
             const response = await axios.delete<ApiResponse>(`/api/delete-message/${message._id}`);
             if (response.data.success) {
+                const messageid = message._id as string; // Cast to string
                 toast({
                     title: response.data.message,
                     variant: "default",
                 });
-                onMessageDelete(message._id);
+                onMessageDelete(messageid);
             } else {
                 toast({
                     title: "Error deleting message",
