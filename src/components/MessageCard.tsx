@@ -56,13 +56,13 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
     
 
     return (
-        <Card className="relative bg-slate-800 text-white border border-slate-700 rounded-lg shadow-md transition transform hover:scale-105 hover:shadow-xl duration-300">
-            <AlertDialog>
+<Card className="relative bg-white text-black border border-gray-300 rounded-lg shadow-md transition transform hover:scale-105 hover:shadow-xl hover:border-blue-400 duration-300">
+<AlertDialog>
                 <AlertDialogTrigger asChild>
                     <Button 
                         variant="ghost" 
                         size="icon" 
-                        className="absolute top-2 right-2 text-red-500 hover:text-red-400 transition-colors"
+                        className="absolute top-2 right-2 text-red-800 hover:text-red-500 transition-colors"
                         aria-label="Delete message"
                     >
                         <X className="w-4 h-4" />
@@ -83,16 +83,16 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
             </AlertDialog>
             <CardHeader className="flex justify-between items-start">
                 <div>
-                    <CardTitle className="text-lg font-semibold">
+                    <CardTitle className="text-lg font-semibold font-sans">
                         {message.content.length > 50 ? `${message.content.substring(0, 50)}...` : message.content}
                     </CardTitle>
-                    <CardDescription className="text-sm text-gray-400">
+                    <CardDescription className="text-sm text-gray-800 font-sans">
                         Received on: {new Date(message.createdAt).toLocaleString()}
                     </CardDescription>
                 </div>
             </CardHeader>
             <CardContent className="pt-2">
-                <p className="text-sm text-gray-300">
+                <p className="text-sm text-gray-600 font-sans">
                     {message.content}
                 </p>
             </CardContent>

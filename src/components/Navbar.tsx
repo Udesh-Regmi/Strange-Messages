@@ -52,7 +52,7 @@ const NavigationBar: React.FC = () => {
   const user: User | null = session?.user as User | null;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white backdrop-blur-lg supports-[backdrop-filter]:bg-opacity-80">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white backdrop-blur-lg supports-[backdrop-filter]:bg-opacity-80 px-6">
       <div className="container flex h-14 items-center justify-between">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -109,7 +109,7 @@ const NavigationBar: React.FC = () => {
             </DropdownMenu>
           ) : (
             <Link href="/sign-in">
-              <Button variant="default" size="sm">
+              <Button variant="default" size="default" className='px-4 py-4'>
                 Sign In
               </Button>
             </Link>

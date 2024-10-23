@@ -24,6 +24,7 @@ const DashboardPage = () => {
     const { data: session } = useSession();
     const [profileUrl, setProfileUrl] = useState<string | null>(null);
 
+
     const form = useForm({
         resolver: zodResolver(AcceptMessageSchema),
         defaultValues: {
@@ -130,22 +131,24 @@ const DashboardPage = () => {
 
     if (!session || !session.user) {
         return (
-            <div className="bg-gray-800 text-white flex items-center justify-center min-h-screen">
+            <div className=" text-black flex items-center justify-center w-full min-h-full ">
                 <div className="text-center">
-                    <h2 className="text-xl font-semibold mb-2">Please Login to Proceed!</h2>
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800">Please Login to Proceed!</h2>
                     <Link href="/sign-up">
-                        <Button className="ml-2">Sign Up</Button>
+                        <Button className="ml-2 bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-200">
+                            Sign Up
+                        </Button>
                     </Link>
                 </div>
             </div>
         );
     }
-
+    
     const { username } = session.user as User;
 
     return (
-        <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-300 to-blue-600 bg-opacity-40 backdrop-blur-lg text-white rounded-lg shadow-lg min-w-[90vw] min-h-screen">
-            <header className="flex items-center justify-between mb-6">
+<div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-white to-indigo-100 bg-opacity-80 backdrop-blur-lg text-black rounded-lg shadow-lg min-w-[90vw] min-h-screen">
+<header className="flex items-center justify-between mb-6">
                 <div className="flex flex-col">
                     <h1 className="text-4xl font-bold">Dashboard</h1>
                     <div className="userinfo text-xl">Welcome back, {username}!</div>
@@ -157,7 +160,7 @@ const DashboardPage = () => {
                             type="text"
                             value={profileUrl || ''} // Fallback to an empty string if profileUrl is null
                             disabled
-                            className='input input-bordered w-full p-4 bg-gray-700 text-white border-gray-600 rounded-md shadow-sm'
+                            className='input input-bordered w-full p-4 bg-white-700 text-black border-white rounded-md shadow-sm'
                         />
                         <Button
                             onClick={() => profileUrl && copyToClipboard(profileUrl)} // Ensure profileUrl is defined before copying
@@ -179,8 +182,8 @@ const DashboardPage = () => {
                    disabled={isSwitchLoading}
                    className="bg-gray-700 border-gray-600"
                />
-               <span className='m-5 text-lg bg-black'>
-                   Accept Messages: <span className={`${acceptMessages ? 'text-green-400' : 'text-red-400'}`}>{acceptMessages ? 'On' : 'Off'}</span>
+               <span className='m-5 text-lg'>
+                   Accept Incoming Messages: <span className={`${acceptMessages ? 'text-green-600' : 'text-red-400'}`}>{acceptMessages ? 'On' : 'Off'}</span>
                </span>
            </div>
 
@@ -192,7 +195,7 @@ const DashboardPage = () => {
                    e.preventDefault();
                    fetchMessages(true);
                }}
-           >
+           >    
                {isLoading ? (
                    <Loader2 className='animate-spin w-4 h-4' />
                ) : (
