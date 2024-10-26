@@ -38,8 +38,19 @@ export async function POST(): Promise<NextResponse> {
     
         // Hardcoded prompt
         const prompt: string = `
-          Generate a list of three thought-provoking and personal questions, separated by '||', that invite users to reflect on their personal experiences and insights. These questions are meant for an anonymous social messaging platform.The questions should cater to a wide and diverse audience, encouraging them to express emotions, values, or lessons they've learned in a way that feels anything, non-judgmental,judgmental. Avoid any filteration that might make users uncomfortable or hesitant to respond. Make sure to use plain english not other ascii values donot include numbers at the beginning of the sentence also donot provide more or less questions. Also make sure that the questions are unique each time
-        `;
+Let me help refine this prompt to be clearer and more focused:
+"Please create 3 engaging questions about your interests. Each question should:
+Focus on one topic from: tech, vehicles (cars/bikes/planes), or social media/travel donot include what topic has been included in question at last.
+Make you think about your real experiences and opinions
+Be written in simple, everyday English
+Challenge your views a bit
+Be separated by ||
+No numbering needed
+Get personal but stay comfortable
+Be easy to understand and answer
+
+For example, we want to know your real thoughts on things like why you prefer certain phones, what draws you to certain vehicles, or how you really feel about social media - the kind of stuff that shows who you are and what you value.
+`;
     
         const result = await model.generateContent(prompt);
     
