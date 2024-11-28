@@ -40,7 +40,7 @@ export async function POST(): Promise<NextResponse> {
         const prompt: string = `
 Let me help refine this prompt to be clearer and more focused:
 "Please create 3 engaging questions about your interests. Each question should:
-Focus on one topic from: tech, vehicles (cars/bikes/planes), or social media/travel donot include what topic has been included in question at last.
+Focus on one topic from: tech, vehicles (cars/bikes), or social media/travel donot include what topic has been included in question at last.
 Make you think about your real experiences and opinions
 Be written in simple, everyday English
 Challenge your views a bit

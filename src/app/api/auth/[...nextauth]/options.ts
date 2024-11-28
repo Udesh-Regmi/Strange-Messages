@@ -52,16 +52,18 @@ export const authOptions: NextAuthOptions = {
                 session.user.email = token.email
                 session.user.isAcceptingMessages = token.isAcceptingMessages
                 session.user.username = token.username
+                session.user.name = token.name
             }
             return session;
 
         },
-        async jwt({ token, user }) {
+        async jwt({ token, user }) {    
             if (user) {
                 token._id = user._id?.toString()
                 token.isVerified = user.isVerified
                 token.isAcceptingMessages = user.isAcceptingMessages
                 token.username = user.username
+                token.name= user.name
             }
             return token;
 

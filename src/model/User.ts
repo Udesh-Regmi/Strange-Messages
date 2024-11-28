@@ -6,6 +6,11 @@ export interface Message extends Document {
   content: string;
   createdAt: Date;
 }
+export interface Friends extends Document {
+  username: string;
+  friendsFrom: Date;
+}
+
 
 export interface User extends Document {
   username: string;
@@ -16,6 +21,7 @@ export interface User extends Document {
   isVerified: boolean;
   isAcceptingMessages: boolean;
   messages: Message[];
+  friendList : Friends[];
 }
 
 const MessageSchema: Schema<Message> = new Schema({
@@ -29,6 +35,24 @@ const MessageSchema: Schema<Message> = new Schema({
     default: Date.now,
   },
 });
+
+
+const FriendListSchema: Schema<Friends> = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,     // Friend's username must be provided
+    },
+    friendsFrom: {
+      type: Date,
+      required: true,
+      default: Date.now, // Defaults to the current date if not provided
+    },
+  },
+  {
+    timestamps: true, // Automatically adds `createdAt` and `updatedAt`
+  }
+);
 
 const UserSchema: Schema<User> = new Schema({
   username: {
@@ -69,6 +93,7 @@ const UserSchema: Schema<User> = new Schema({
     default: true,
   },
   messages: [MessageSchema],
+  friendList: [FriendListSchema],
 });
 
 const UserModel =
