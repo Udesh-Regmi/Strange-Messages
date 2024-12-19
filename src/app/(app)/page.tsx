@@ -125,7 +125,7 @@ const HomePage = () => {
   <HoverCardTrigger asChild>
     <section className="rounded-lg shadow-lg p-6 max-w-2xl mx-auto mb-6 transition-all duration-300 ease-in-out hover:shadow-2xl cursor-pointer bg-white hover:bg-blue-50">
       <h1 className="text-3xl font-bold mb-4 text-center text-black">
-        Dive into an Anonymous Journey
+        Dive into an Strange Journey
       </h1>
       <p className="text-gray-600 text-sm text-center">
         Share your thoughts anonymously. Express yourself freely without revealing your identity.
