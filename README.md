@@ -1,5 +1,5 @@
 
-# 🎭 Anonymous Message Sending App
+# 🎭 Strange Message Sending App
 
 ![Next.js](https://img.shields.io/badge/Next.js-14.2-000000?style=for-the-badge&logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.0+-61DAFB?style=for-the-badge&logo=react&logoColor=black)
@@ -9,12 +9,12 @@
 
 ---
 
-## 🚀 Welcome to the Anonymous Message Sending App!
+## 🚀 Welcome to the Strange Message Sending App!
 
 Discover a secure and engaging platform built with **Next.js**! Here, users can create accounts, share unique URLs, and receive anonymous feedback. Perfect for gathering genuine thoughts without revealing identities. 🤫
 
 ### 🌟 Explore the Live Demo
-Check out our live application: [Anonymous Messages App](https://anonymous-message-next-js.vercel.app/)
+Check out our live application: [Strange Messages App](https://strange-message.vercel.app/)
 
 ---
 
