@@ -51,9 +51,9 @@ const Feed = () => {
       {/* Center Card Carousel */}
       <div className="w-full max-w-4xl space-y-6">
         <div className="text-center p-8 rounded-lg shadow-lg bg-white mb-8">
-          <h1 className="text-5xl font-bold mb-6 text-black">Welcome to Feed</h1>
+          <h1 className="text-5xl font-bold mb-6 text-black">Welcome to Feed </h1>
           <p className="text-lg font-medium mb-4 text-black">
-            Enjoy the latest updates and posts from your connections.
+           ............This page is not fully  functional yet............
           </p>
         </div>
 

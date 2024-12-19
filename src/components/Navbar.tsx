@@ -57,7 +57,7 @@ const NavigationBar: React.FC = () => {
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="hidden font-bold text-black sm:inline-block">
-              Anonymous Messages
+              Strange Messages
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium text-gray-800">
@@ -76,7 +76,7 @@ const NavigationBar: React.FC = () => {
           </SheetTrigger>
           <SheetContent side="left" className="pr-0 bg-white backdrop-blur-lg">
             <MobileLink href="/" onOpenChange={() => {}}>
-              <span className="font-bold text-black">Anonymous Messages</span>
+              <span className="font-bold text-black">Strange Messages</span>
             </MobileLink>
             <div className="my-4 flex flex-col space-y-3">
               <NavItems />

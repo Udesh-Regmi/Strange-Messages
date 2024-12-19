@@ -1,6 +1,6 @@
 [
     {
-      "title": "Messages of Sarah",
+      "title": "Messages of Sristi",
       "messages": [
         "I can’t wait to see you again!",
         "Let's plan a dinner soon.",
@@ -42,10 +42,10 @@
         "I’ll check on the schedule and get back to you."
       ],
       "receivedAt": "1 hour ago",
-      "photo":"https://images.unsplash.com/reserve/RONyPwknRQOO3ag4xf3R_Kinsey.jpg?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fDE4JTIweWVhciUyMHRlZW4lMjBnaXJsfGVufDB8fDB8fHww"
+      "photo":"https://utfs.io/f/Z9wyzBEmJFbSguuu94NRuFlIVmJtOi3L6bS7CWr0je2kG9wK"
     },
     {
-      "title": "Messages of John",
+      "title": "Messages of Usab",
       "messages": [
         "Can’t wait for the weekend!",
         "Let's meet up soon.",
@@ -55,7 +55,7 @@
         "I’m here if you need anything."
       ],
       "receivedAt": "3 hours ago",
-      "photo":"https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJ1bGslMjBtYW58ZW58MHx8MHx8fDA%3D"
+      "photo":"https://utfs.io/f/Z9wyzBEmJFbS36eOVRZFezifMgo7KCUZwnkXptOBjHDrvqA8"
     },
     {
       "title": "Messages of Emily",
@@ -73,9 +73,31 @@
       ],
       "receivedAt": "5 hours ago",
       "photo":"https://images.unsplash.com/photo-1729632604860-a99ebd0002a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzNHx8fGVufDB8fHx8fA%3D%3D"
+    },   {
+      "title": "Messages of Preety",
+      "messages": [
+        "Great to hear from you.",
+        "I’ll let you know if I need anything.",
+        "I hope you're doing well.",
+        "Can we meet next week?"
+      ],
+      "receivedAt": "4 days ago",
+      "photo":"https://utfs.io/f/Z9wyzBEmJFbSaWYdk4UoaK52GW1ctAIx6VCSlE3YpN0djZeh"
     },
     {
-      "title": "Messages of Alexia",
+      "title": "Messages of Sitti",
+      "messages": [
+        "Can’t wait to hear your thoughts on this.",
+        "Looking forward to our collaboration.",
+        "I’ll be available to chat tomorrow.",
+        "Let’s discuss the next steps.",
+        "Thanks for your help with that task."
+      ],
+      "receivedAt": "2 days ago",
+      "photo": "https://utfs.io/f/Z9wyzBEmJFbSDu8NPwqrn6bIFlRz1TcMH7Lf9to0WpGZX8Au"
+    },
+    {
+      "title": "Messages of Nirjana",
       "messages": [
         "I’m glad we could talk.",
         "I’m excited for our project together.",
@@ -84,7 +106,7 @@
         "Let me know if you need any help."
       ],
       "receivedAt": "2 hours ago",
-      "photo":"https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/459568071_961040659399565_4999641485524757194_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=RFdhRoFAymUQ7kNvgEEuc0s&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&_nc_gid=AidoFf3lD08G5Ce6oNv-9mW&oh=03_Q7cD1QF5TRW2kpMiMgq6H-q0dFtGZFJ_cH8yUJhFFAfmiWFZTg&oe=67417809"
+      "photo": "https://utfs.io/f/Z9wyzBEmJFbS1zpkkcrZ13vwpVQUOBsodJbWNa7tKM6jEcI4"
     },
     {
       "title": "Messages of Olivia",
@@ -99,7 +121,7 @@
       "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2lmdHxlbnwwfDB8MHx8fDA%3D"
     },
     {
-      "title": "Messages of Henna",
+      "title": "Messages of Utsab",
       "messages": [
         "I’ll send the report soon.",
         "Let me know if you need any help with that.",
@@ -108,7 +130,7 @@
         "Let’s meet to discuss the project."
       ],
       "receivedAt": "1 day ago",
-      "photo": "https://images.unsplash.com/photo-1512310604669-443f26c35f52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW9kZWwlMjBnaXJsJTIwbmVwYWxpfGVufDB8fDB8fHww"
+      "photo": "https://utfs.io/f/Z9wyzBEmJFbS1iV5NIrZ13vwpVQUOBsodJbWNa7tKM6jEcI4"
     },
     {
       "title": "Messages of Emma",
@@ -132,29 +154,7 @@
       ],
       "receivedAt": "3 hours ago",
       "photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VubnklMjBsb25nJTIwcGVvcGxlfGVufDB8MHwwfHw%3D"
-    },
-    {
-      "title": "Messages of Mia",
-      "messages": [
-        "Great to hear from you.",
-        "I’ll let you know if I need anything.",
-        "I hope you're doing well.",
-        "Can we meet next week?"
-      ],
-      "receivedAt": "4 days ago",
-      "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNtaWxpbmclMjBtZW4lMjBoYXBweXxlbnwwfDB8MHx8fDA%3D"
-    },
-    {
-      "title": "Messages of Sitti",
-      "messages": [
-        "Can’t wait to hear your thoughts on this.",
-        "Looking forward to our collaboration.",
-        "I’ll be available to chat tomorrow.",
-        "Let’s discuss the next steps.",
-        "Thanks for your help with that task."
-      ],
-      "receivedAt": "2 days ago",
-      "photo":"https://scontent-atl3-1.xx.fbcdn.net/v/t1.15752-9/462571323_974590744713343_3572287005229844527_n.jpg?stp=dst-jpg_p480x480&_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=EEmBtFOza94Q7kNvgExbvAI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&oh=03_Q7cD1QHZRGagL2NB8tX6wDyFb5QjjakCmzS_m5K95yL2vEm8Mg&oe=675C0F7A"
     }
+ 
   ]
   
