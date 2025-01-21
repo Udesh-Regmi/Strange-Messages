@@ -91,9 +91,13 @@ const UserSchema: Schema<User> = new Schema({
   isAcceptingMessages: {
     type: Boolean,
     default: true,
-  },
+  },    
   messages: [MessageSchema],
-  // friendList: [FriendListSchema],
+  
+//   birthdayWishes: [BirthdayWishSchema],
+
+  // friendList: [FriendListSchema],   
+
 });
 
 const UserModel =
