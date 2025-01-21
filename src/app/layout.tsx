@@ -4,6 +4,9 @@ import "./globals.css";
 import AuthProvider from "@/context/AuthProvider";
 import { Toaster } from "@/components/ui/toaster"
 import NavigationBar from "@/components/Navbar";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 
 const geistSans = localFont({
@@ -24,9 +27,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <AuthProvider>
@@ -34,6 +37,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased` }
       >
         <NavigationBar/>
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         {children}
         <Toaster/>
       </body>

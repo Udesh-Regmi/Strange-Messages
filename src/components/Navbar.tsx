@@ -44,6 +44,9 @@ const NavItems: React.FC = () => (
     <Link href="/buy-me-coffee" className="text-sm font-medium transition-colors hover:text-gray-500">
       Buy Coffee
     </Link>
+    <Link href="/birthday-wish" className="text-sm font-medium transition-colors hover:text-gray-500">
+      Wish Someone 
+    </Link>
   </>
 );
 
