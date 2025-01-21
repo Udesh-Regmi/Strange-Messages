@@ -291,6 +291,8 @@ const BirthdayWishPage = () => {
                                 <Image
                                     src={url}
                                     alt={`Preview ${index + 1}`}
+                                    width={300}
+                                    height={300}
                                     className="w-full h-40 object-cover rounded-lg"
                                 />
                                 <button
