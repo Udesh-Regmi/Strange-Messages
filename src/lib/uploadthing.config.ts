@@ -5,10 +5,7 @@ if (!process.env.UPLOADTHING_TOKEN || !process.env.UPLOADTHING_APP_ID) {
     throw new Error("UPLOADTHING_TOKEN and UPLOADTHING_APP_ID must be defined in environment variables.");
 }
 
-export const uploadthing = createUploadthing({
-    secret: process.env.UPLOADTHING_TOKEN,
-    appId: process.env.UPLOADTHING_APP_ID // Ensure that appId is passed to the createUploadthing method
-});
+export const uploadthing = createUploadthing();
 
 export const fileRouter = {
     imageUploader: uploadthing({

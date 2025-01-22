@@ -1,6 +1,6 @@
 export const metadata = {
-    title: 'Dashboard',
-    description: 'See who messaged you !',
+    title: 'Birthday Wish Card',
+    description: 'Make your birthday Card for your favorite person !',
   }
   
   export default function RootLayout({
