@@ -19,7 +19,7 @@ import Image from 'next/image';
 const isValidAge = (dateString: string): boolean => {
     const birthDate = new Date(dateString);
     const now = new Date();
-    
+
     // Check if it's a valid date
     if (isNaN(birthDate.getTime())) {
         return false;
@@ -28,12 +28,12 @@ const isValidAge = (dateString: string): boolean => {
     // Calculate age in years
     let ageInYears = now.getFullYear() - birthDate.getFullYear();
     const monthDiff = now.getMonth() - birthDate.getMonth();
-    
+
     // Adjust age if birthday hasn't occurred this year
     if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birthDate.getDate())) {
         ageInYears = ageInYears - 1;
     }
-    
+
     // Check if date is in the future
     if (birthDate > now) {
         return false;
@@ -110,11 +110,11 @@ const BirthdayWishPage = () => {
                 console.log("Starting upload...");
                 try {
                     const uploadResponse = await startUpload(selectedImages);
-                    
+
                     if (!uploadResponse) {
                         throw new Error("No upload response received");
                     }
-                    
+
                     imageUrls = uploadResponse.map(file => file.url);
                     console.log("Uploaded URLs:", imageUrls);
                 } catch (uploadError: any) {
@@ -160,7 +160,7 @@ const BirthdayWishPage = () => {
         }
 
         setSelectedImages(prev => [...prev, ...files]);
-        
+
         // Create preview URLs
         files.forEach(file => {
             const reader = new FileReader();
@@ -237,14 +237,19 @@ const BirthdayWishPage = () => {
                         className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                         <option value="">Select Relationship</option>
-                        <option value="Brother">Brother</option>
-                        <option value="Sister">Sister</option>
-                        <option value="Mother">Mother</option>
-                        <option value="Father">Father</option>
-                        <option value="Best Friend">Best Friend</option>
-                        <option value="Friend">Friend</option>
-                        <option value="Lover">Lover</option>
-                        <option value="Girlfriend">Girlfriend</option>
+                        <option value="sister">Sister</option>
+                        <option value="brother">Brother</option>
+                        <option value="friend">Friend</option>
+                        <option value="lover">Lover</option>
+                        <option value="one_sided">One-sided-Love</option>
+                        <option value="bestFriend">Best Friend</option>
+                        <option value="girlFriend">Girlfriend</option>
+                        <option value="boyFriend">Boyfriend</option>
+                        <option value="mother">Mother</option>
+                        <option value="husband">Husband</option>
+                        <option value="nothing">Nothing</option>
+                        <option value="father">Father</option>
+
                     </select>
                     {form.formState.errors.relationship && (
                         <p className="text-red-500 text-sm mt-1">
