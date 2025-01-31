@@ -57,6 +57,7 @@ const birthdayWishSchema = z.object({
         .max(1000, 'Description must be less than 1000 characters'),
     relationship: z.string()
         .min(1, 'Relationship is required'),
+    occassion: z.string().min(1, 'Occassion is required'),
     imageUrls: z.array(z.string()).optional(),
 });
 
@@ -78,6 +79,7 @@ const BirthdayWishPage = () => {
             dateOfBirth: '',
             description: '',
             relationship: '',
+            occassion: '',
             imageUrls: [],
         },
     });
@@ -107,7 +109,7 @@ const BirthdayWishPage = () => {
             // Upload images first
             let imageUrls: string[] = [];
             if (selectedImages.length > 0) {
-                console.log("Starting upload...");
+                // console.log("Starting upload...");
                 try {
                     const uploadResponse = await startUpload(selectedImages);
 
@@ -116,7 +118,7 @@ const BirthdayWishPage = () => {
                     }
 
                     imageUrls = uploadResponse.map(file => file.url);
-                    console.log("Uploaded URLs:", imageUrls);
+                    // console.log("Uploaded URLs:", imageUrls);
                 } catch (uploadError: any) {
                     console.error("Upload error:", uploadError);
                     throw new Error(uploadError.message || "Failed to upload images");
@@ -132,7 +134,7 @@ const BirthdayWishPage = () => {
 
             toast({
                 title: "Success",
-                description: "Birthday wish created successfully!"
+                description: "Wish created successfully!"
             });
 
             router.push(`/birthday/${response.data.wishId}`);
@@ -190,8 +192,8 @@ const BirthdayWishPage = () => {
     }
 
     return (
-        <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg">
-            <h1 className="text-3xl font-bold mb-6 text-center">Create Birthday Wish</h1>
+        <div className="min-w-[50vw] mx-auto p-8 bg-white rounded-lg shadow-lg">
+            <h1 className="text-3xl font-bold mb-6 text-center">Create Wish Card</h1>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div>
                     <label htmlFor="recipientName" className="block mb-2 font-semibold">
@@ -228,6 +230,30 @@ const BirthdayWishPage = () => {
                 </div>
 
                 <div>
+                    <label htmlFor="occassion" className="block mb-2 font-semibold">
+                    Occassion
+                    </label>
+                    <select
+                        id="occassion"
+                        {...form.register('occassion')}
+                        className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        <option disabled value="">Select occassion</option>
+                        <option value="birthday">Birthday</option>
+                        <option value="valentine">Valentine</option>
+                        <option value="anniversary">Anniversary</option>
+                        <option value="propose">Propose</option>
+                        <option value="casual">Casual Compliment</option>
+                 
+
+                    </select>
+                    {form.formState.errors.occassion && (
+                        <p className="text-red-500 text-sm mt-1">
+                            {form.formState.errors.occassion.message}
+                        </p>
+                    )}
+                </div>
+                <div>
                     <label htmlFor="relationship" className="block mb-2 font-semibold">
                         Relationship
                     </label>
@@ -236,7 +262,7 @@ const BirthdayWishPage = () => {
                         {...form.register('relationship')}
                         className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                        <option value="">Select Relationship</option>
+                        <option disabled value="">Select Relationship</option>
                         <option value="sister">Sister</option>
                         <option value="brother">Brother</option>
                         <option value="friend">Friend</option>

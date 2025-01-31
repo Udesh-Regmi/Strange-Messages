@@ -5,6 +5,7 @@ export interface IBirthdayWish extends Document {
     dateOfBirth: Date;
     description: string;
     relationship: string;
+    occassion: string;
     imageUrls: string[];
     createdBy: string;
     createdAt: Date;
@@ -25,6 +26,10 @@ const BirthdayWishSchema = new mongoose.Schema({
         required: true,
     },
     relationship: {
+        type: String,
+        required: true,
+    },
+    occassion: {
         type: String,
         required: true,
     },

@@ -35,6 +35,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import Image from 'next/image';
 import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import Link from 'next/link';
 
 const HomePage = () => {
   return (
@@ -128,20 +129,20 @@ const HomePage = () => {
         Dive into an Strange Journey
       </h1>
       <p className="text-gray-600 text-sm text-center">
-        Share your thoughts anonymously. Express yourself freely without revealing your identity.
+        Share your thoughts in a strange way . Express yourself freely without revealing your identity.
       </p>
     </section>
   </HoverCardTrigger>
   <HoverCardContent className="w-80 bg-white text-gray-900 border-gray-200 rounded-lg p-4 shadow-xl">
     <p className="text-sm text-center">
-      Start your anonymous journey today! Login to learn more about our platform and how it works.
+      Start your strange journey today! Login to learn more about our platform and how it works.
     </p>
   </HoverCardContent>
 </HoverCard>
 
         <div className="card w-full max-w-md">
           <Carousel
-            plugins={[Autoplay({ delay: 5000 })]}
+            plugins={[Autoplay({ delay: 3000 })]}
             className="w-full max-w-md">
             <CarouselContent>
               {messages.map((message, index) => (
@@ -170,6 +171,20 @@ const HomePage = () => {
           </Carousel>
         </div>
       </main>
+      <div className="card-section text-gray-900 test-center p-4">
+        <h2 className="text-2xl font-bold text-center text-black mb-4 py-4">
+          Share your thoughts
+        </h2>
+        <Separator/>
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-center text-gray-600 text-sm">
+            Share your thoughts in a strange way. Express yourself freely without revealing your identity.
+          </p>
+          <Button variant="default" className="mt-4">
+            <Link href="/dashboard">Share your thoughts</Link>
+            </Button>
+        </div>
+      </div>
       <div className="faq-section flex flex-grow items-center justify-center py-8 px-4 pt-12">
   <Accordion
     type="single"
