@@ -55,7 +55,7 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
           translation: {
             greeting: ` Happy ${wish?.occassion}🎉`,
             age: "years and many more to go ❤️",
-            by: "Created with ❤️ by",
+            by: "Made with ❤️ by",
             error: "Birthday wish not found",
           },
         },
