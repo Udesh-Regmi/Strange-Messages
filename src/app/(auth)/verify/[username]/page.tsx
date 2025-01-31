@@ -56,9 +56,9 @@ const VerifyAccount = () => {
 <div className="w-full max-w-md p-8 space-y-8 bg-white bg-opacity-40 backdrop-filter backdrop-blur-lg rounded-xl shadow-xl ring-2 ring-indigo-200 ring-opacity-50">
 <div className="text-center">
                     <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-5">
-                        Join Anonymous Messages
+                        Join Strange Messages
                     </h1>
-                    <p className="mb-3">Verify Code to enjoy Anonymous Adventure </p>
+                    <p className="mb-3">Verify Code to enjoy Strange Journey </p>
                 </div>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

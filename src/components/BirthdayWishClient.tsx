@@ -38,21 +38,7 @@ const defaultTheme: ThemeConfig = {
 
 
 // Initialize i18next for translations
-i18next.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: {
-        greeting: "Happy Birthday🎊",
-        age: "years and many more to go ❤️",
-        by: "Created with ❤️ by",
-        error: "Birthday wish not found",
-      },
-    },
-  },
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: { escapeValue: false },
-});
+
 
 export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
   const params = useParams();
@@ -63,7 +49,21 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
   const appliedTheme: ThemeConfig =
     theme || (wish?.relationship ? relationThemes[wish.relationship] : defaultTheme);
 
-
+    i18next.use(initReactI18next).init({
+      resources: {
+        en: {
+          translation: {
+            greeting: ` Happy ${wish?.occassion}🎉`,
+            age: "years and many more to go ❤️",
+            by: "Created with ❤️ by",
+            error: "Birthday wish not found",
+          },
+        },
+      },
+      lng: "en",
+      fallbackLng: "en",
+      interpolation: { escapeValue: false },
+    });
   useEffect(() => {
     const fetchWish = async () => {
       try {
@@ -127,7 +127,6 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
             transform transition-all duration-300
           `}
         >
-
           <TrueFocus
               sentence={i18next.t("greeting")}
               manualMode={false}

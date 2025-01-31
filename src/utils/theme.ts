@@ -11,7 +11,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-rose',
     particleEffects: ['hearts', 'sparkles', 'stars'],
     animations: ['floating', 'pulse', 'shimmer'],
-    decorativeElements: ['❤️', '💕', '💑', '💘'],
+    decorativeElements: ['❤️', '💕', '💑', '💘', '💑', '💘', '💝', '💖', '💕', '🌹'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-rose-200/50',
       active: 'active:scale-98',
@@ -30,7 +30,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-fuchsia',
     particleEffects: ['hearts', 'butterflies', 'flowers'],
     animations: ['bounce', 'float', 'twirl'],
-    decorativeElements: ['💝', '🦋', '🌸', '✨'],
+    decorativeElements: ['💝','💑', '🌸', '🫀','👩‍❤️‍👨', '💋', '💐', '💝', '👗', '💅'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-fuchsia-200/50',
       active: 'active:scale-98',
@@ -68,7 +68,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-amber',
     particleEffects: ['rings', 'hearts', 'stars'],
     animations: ['float', 'pulse', 'shine'],
-    decorativeElements: ['💍', '💑', '💖', '✨'],
+    decorativeElements: ['💍', '💑', '💖', '🥳', '👨‍👩‍👧', '💍', '👔', '🏠', '💑', '👨‍❤️‍💋‍👨'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-amber-200/50',
       active: 'active:scale-98',
@@ -87,7 +87,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-rose',
     particleEffects: ['rings', 'sparkles', 'hearts'],
     animations: ['float', 'pulse', 'sparkle'],
-    decorativeElements: ['💍', '💝', '💑', '✨'],
+    decorativeElements: ['🤝', '🔥', '😊', '🌟', '❤️‍🔥', '🫡', '🎭', '🎮', '🎪'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-rose-200/50',
       active: 'active:scale-98',
@@ -106,7 +106,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-purple',
     particleEffects: ['butterflies', 'sparkles', 'petals'],
     animations: ['breeze', 'bounce', 'shimmer'],
-    decorativeElements: ['💜', '👭', '🌸'],
+    decorativeElements: ['🧠', '👭', '🌸'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-purple-200/50',
       active: 'active:scale-98',
@@ -125,7 +125,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-blue',
     particleEffects: ['lightning', 'orbs', 'waves'],
     animations: ['hover-float', 'glow', 'pulse'],
-    decorativeElements: ['💙', '🧑‍🤝‍🧑', '⚡'],
+    decorativeElements: ['💙', '🔥', '🧑‍🤝‍🧑', '⚡','👊', '🤜🤛', '👬', '💪', '🦁', '👨‍👦'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-blue-200/50',
       active: 'active:scale-97',
@@ -144,7 +144,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-green',
     particleEffects: ['confetti', 'balloons', 'bubbles'],
     animations: ['wave', 'zoom', 'spin'],
-    decorativeElements: ['💚', '🤝', '🌿'],
+    decorativeElements: ['❌', '🚫', '💨', '🌫️', '🗑️', '🚮'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-green-200/50',
       active: 'active:scale-99',
@@ -163,7 +163,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-gray',
     particleEffects: ['falling-petals', 'rain', 'broken-hearts'],
     animations: ['fade', 'slow-glow', 'drift'],
-    decorativeElements: ['💔', '😔', '💭'],
+    decorativeElements: ['💔', '🥹', '😔', '💭','🫀', '🥀', '😢', '🌧️', '📝', '🫂'],
     specialEffects: {
       hover: 'hover:shadow-lg hover:shadow-gray-300/50',
       active: 'active:scale-100',
@@ -182,7 +182,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-yellow',
     particleEffects: ['smiley-faces', 'sunbursts', 'glitters'],
     animations: ['bounce', 'vibrate', 'spin'],
-    decorativeElements: ['🌟', '😊', '🎉'],
+    decorativeElements: ['🌟',  '😍', '😊', '🎉','🤞', '💫', '🍕', '🎵', '✨', '💎'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-yellow-200/50',
       active: 'active:scale-98',
@@ -201,7 +201,7 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     glowEffect: 'animate-glow-pink',
     particleEffects: ['flowers', 'hearts', 'butterflies'],
     animations: ['gentle-glow', 'soft-fade', 'wave'],
-    decorativeElements: ['🌹', '👩‍👧', '💗'],
+    decorativeElements: ['👩‍👧', '🤱', '💕', '👪', '🫂', '🥰'],
     specialEffects: {
       hover: 'hover:shadow-xl hover:shadow-pink-200/50',
       active: 'active:scale-97',
@@ -229,5 +229,4 @@ export const relationThemes: Record<Relation, ThemeConfig> = {
     }
   },
 
-  // Add other relationships with similar detailed configurations...
 };

@@ -11,6 +11,9 @@ export type Relation =
   | 'husband'
   | 'nothing'
   | 'father' ;
+
+
+export type Occasion = 'birthday' | 'anniversary' | 'valentine' | 'casual' | 'propose';
 export interface ThemeConfig {
   primary: string;
   secondary: string;
@@ -36,4 +39,5 @@ export interface BirthdayWish {
   imageUrls: string[];
   createdBy: string;
   relationship: Relation;
+  occassion: Occasion;
 }

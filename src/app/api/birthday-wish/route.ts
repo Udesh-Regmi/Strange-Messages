@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
         // Get request body
         const body = await request.json();
-        const { recipientName, dateOfBirth, description, relationship, imageUrls, createdBy } = body;
+        const { recipientName, occassion, dateOfBirth, description, relationship, imageUrls, createdBy } = body;
 
         // Generate unique wishId
         const wishId = uuidv4();
@@ -33,6 +33,7 @@ export async function POST(request: Request) {
             dateOfBirth,
             description,
             relationship,
+            occassion,
             imageUrls,
             createdBy,
             wishId,
