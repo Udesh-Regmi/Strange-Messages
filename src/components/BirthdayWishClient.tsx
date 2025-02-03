@@ -10,6 +10,9 @@ import TrueFocus from "./TrueFocus";
 import DecryptedText from "./DecryptedText";
 import PixelTransition from "./PixelTransition";
 import Stack from "./Stack";
+import { motion } from "framer-motion";
+import { Copy, CopyCheck } from 'lucide-react';
+
 
 import type { BirthdayWish, ThemeConfig } from "@/types/birthday";
 import { relationThemes } from "@/utils/theme";
@@ -45,25 +48,42 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
   const [wish, setWish] = useState<BirthdayWish | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isCopied, setIsCopied] = useState(false); // State to track if URL is copied
+
 
   const appliedTheme: ThemeConfig =
     theme || (wish?.relationship ? relationThemes[wish.relationship] : defaultTheme);
 
-    i18next.use(initReactI18next).init({
-      resources: {
-        en: {
-          translation: {
-            greeting: ` Happy ${wish?.occassion}🎉`,
-            age: "years and many more to go ❤️",
-            by: "Made with ❤️ by",
-            error: "Birthday wish not found",
-          },
+  const copyUrlToClipboard = () => {
+    const pathname = window.location.pathname
+    const currentUrl = `${window.location.origin}${pathname}`;
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 7000); // Reset after 2 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy URL:", err);
+      });
+  };
+
+
+  i18next.use(initReactI18next).init({
+    resources: {
+      en: {
+        translation: {
+          greeting: ` Happy ${wish?.occassion}🎉`,
+          age: "years and many more to go ❤️",
+          by: "Made with ❤️ by",
+          error: "Birthday wish not found",
         },
       },
-      lng: "en",
-      fallbackLng: "en",
-      interpolation: { escapeValue: false },
-    });
+    },
+    lng: "en",
+    fallbackLng: "en",
+    interpolation: { escapeValue: false },
+  });
   useEffect(() => {
     const fetchWish = async () => {
       try {
@@ -110,13 +130,60 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
     <div
       className={`min-h-screen bg-gradient-to-r ${appliedTheme.background} py-12 px-6`}
     >
-    <FloatingDecorations 
-    emojis={appliedTheme.decorativeElements}
-  
+      <FloatingDecorations
+        emojis={appliedTheme.decorativeElements}
+
       />
-      <div className="max-w-4xl mx-auto space-y-8">
+
+
+      <div
+        className="max-w-4xl mx-auto space-y-8">
+            {/* URL Copy Section */}
+        <motion.div
+          animate={{ opacity: [0, 1], y: [40, 0] }}
+          transition={{ duration: 2 }}
+          className={`
+            bg-gradient-to-r ${appliedTheme.secondary}
+            rounded-2xl p-6 shadow-md
+            ${appliedTheme.glowEffect}
+            ${appliedTheme?.specialEffects?.hover}
+            transform transition-all duration-300
+          `}
+        >
+          <div className="flex items-center justify-between">
+            <p className={`text-lg ${appliedTheme.text}`}>
+              Share this wish with {wish.recipientName}!  💌
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={copyUrlToClipboard}
+              className={`
+                flex items-end gap-2
+                px-4 py-2 rounded-lg
+                ${appliedTheme?.specialEffects?.hover}
+                ${appliedTheme.text}
+              `}
+            >
+              {isCopied ? (
+                <>
+                  < CopyCheck className="text-green-500" />
+                  <span>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="text-red-500" />
+                  <span>Copy URL</span>
+                </>
+              )}
+            </motion.button>
+          </div>
+        </motion.div>
         {/* Greeting Section */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1, rotate: [-90, -80, -50, -30, -10, 0] }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className={`
             bg-gradient-to-r ${appliedTheme.primary} 
             rounded-2xl p-8 
@@ -128,15 +195,18 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
           `}
         >
           <TrueFocus
-              sentence={i18next.t("greeting")}
-              manualMode={false}
-              blurAmount={10}
-              borderColor={appliedTheme.accent}  
-              glowColor={appliedTheme.text}            
-              animationDuration={1}
-              pauseBetweenAnimations={1}
-            />
-          <p className="text-center text-xl">
+            sentence={i18next.t("greeting")}
+            manualMode={false}
+            blurAmount={10}
+            borderColor={appliedTheme.accent}
+            glowColor={appliedTheme.text}
+            animationDuration={1}
+            pauseBetweenAnimations={1}
+          />
+          <motion.p
+            animate={{ scale: [0, 0.35, 0.5, 0.75, 1, 1.25, 1.5] }}
+            transition={{ duration: 4 }}
+            className="text-center text-xl">
             <DecryptedText
               text={wish.recipientName}
               animateOn="view"
@@ -144,18 +214,22 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
               maxIterations={75}
               characters="ABCDEFG1234!?@"
             />
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Birthday Details */}
-        <div className={`
+        <motion.div
+
+          animate={{ scale: [0, 0.35, 0.5, 0.75, 1] }}
+          transition={{ duration: 1 }}
+          className={`
         ${appliedTheme.glowEffect}
           ${appliedTheme?.specialEffects?.cards}
           rounded-2xl shadow-md p-6 flex  align-middle justify-between  
           ${appliedTheme?.specialEffects?.hover}
           transform transition-all duration-600
-        `}>   
-               <PixelTransition
+        `}>
+          <PixelTransition
             firstContent={
               <Image
                 src={wish.imageUrls[0]}
@@ -167,8 +241,8 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
             }
             secondContent={
               <div className="flex items-center justify-center bg-indigo-100 rounded-lg h-full">
-                    <p className={`font-bold text-lg ${appliedTheme.text}`}>
-                    {wish.relationship}
+                <p className={`font-bold text-lg ${appliedTheme.text}`}>
+                  {wish.description.slice(0, 25)}.......
                 </p>
               </div>
             }
@@ -183,11 +257,16 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
             sensitivity={180}
             sendToBackOnClick={true}
           />
+          <p> </p>
 
-        </div>
+        </motion.div>
 
         {/* Description */}
-        <div className={`
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1 }}
+          className={`
           bg-gradient-to-r ${appliedTheme.secondary}
           rounded-2xl p-6 shadow-md
           ${appliedTheme.glowEffect}
@@ -196,7 +275,8 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
         `}>
 
           {/* Age Section */}
-          <div className={` bg-white rounded-2xl shadow-md p-6`}>
+          <div
+            className={` bg-white rounded-2xl shadow-md p-6`}>
 
             <p className=" text-3xl inline-block text-gray-600">{calculateAge(wish.dateOfBirth)} &nbsp; </p>
             <p className={`text-xl inline-block font-semibold ${appliedTheme.text}`}>
@@ -221,11 +301,15 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
                 characters="ABC123!?"
               />
             </p>
+
           </div>
-        </div>
+        </motion.div>
 
 
-        <div className={`
+
+
+        <div
+          className={`
           ${appliedTheme?.specialEffects?.cards}
           rounded-2xl p-6
           ${appliedTheme?.specialEffects?.hover}
@@ -235,7 +319,7 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
           ${appliedTheme.animations?.join(' ')}
           
         `}>
-          <BookGallery 
+          <BookGallery
             images={wish.imageUrls}
           />
         </div>
@@ -256,7 +340,7 @@ export default function BirthdayWishClient({ theme }: { theme?: ThemeConfig }) {
             </div>
           ))}
         </div> */}
-         
+
 
       </div>
     </div>
