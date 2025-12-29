@@ -3,12 +3,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["iad1"],
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "NEXTAUTH_URL": "@nextauth_url",
-    "NEXTAUTH_SECRET": "@nextauth_secret",
-    "RESEND_API_KEY": "@resend_api_key",
-    "GOOGLE_AI_API_KEY": "@google_ai_api_key"
-  }
+  "regions": ["iad1"]
+  
 }
