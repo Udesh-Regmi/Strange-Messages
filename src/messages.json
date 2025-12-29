@@ -3,19 +3,17 @@
     "title": "Message to Admin ",
     "content": "Which tech stack did you use to make this website",
     "createdAt": "1 minutes ago", 
-    "photo": "https://instagram.fktm3-1.fna.fbcdn.net/v/t51.2885-19/448433222_983930659775164_8661119651978405390_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_ht=instagram.fktm3-1.fna.fbcdn.net&_nc_cat=104&_nc_oc=Q6cZ2AFqLTx96gBZH5eEX0k5jGPa3sgLaB9B5Zd91R6u0W2slKhRnxRgxGAGTzB_CLg95_7WLQk9sz-WZ5mASq6IXCAi&_nc_ohc=gQSuKNgOE18Q7kNvgF0wzwD&_nc_gid=475fe875347c47eb873c7daf85d2cfd3&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AYDmMLOeZovZqa8yBKdy9_8DEpZfWfLN4h_cGUnkrOD_Ag&oe=67A20D89&_nc_sid=7a9f4b"
-
-  },
+    "photo": ""  },
   {
     "title": "Message to Rishab",
     "content": "Hello ! How is your vacation going on .",
     "createdAt": "20 minutes ago", 
-    "photo":"https://images.unsplash.com/photo-1617332518605-22c3063112cb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "photo":""
   },
   {
     "title": "Message to User123",
     "content": "Hey! I’ve been thinking of you. Let’s meet soon!",
     "createdAt": "9 hours ago",
-    "photo":"https://images.unsplash.com/photo-1590209680469-534b21078b1a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+    "photo":""
   }
 ]

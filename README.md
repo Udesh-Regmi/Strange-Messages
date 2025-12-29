@@ -55,8 +55,7 @@ Check out our live application: [Strange Messages App](https://strange-message.v
 - **@google/generative-ai** (v0.21.0)
 
 ### Email
-- **React Email** (v3.0.1)
-- **Resend** (v4.0.0)
+- **Nodemailer Email** 
 
 ---
 
@@ -66,8 +65,8 @@ Follow these steps to set up the project locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Udesh-Regmi/Anonymous_Message_NextJS.git
-   cd Anonymous_Message_NextJS
+   git clone https://github.com/Udesh-Regmi/Strange-Messages
+   cd Strange-Messages
    ```
 
 2. **Install dependencies:**
@@ -82,11 +81,15 @@ Follow these steps to set up the project locally:
 3. **Set up environment variables:**
    Create a `.env.local` file in the root directory:
    ```env
-   MONGODB_URI=your_mongodb_connection_string
-   NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=your_nextauth_secret
-   RESEND_API_KEY=your_resend_api_key
-   GOOGLE_AI_API_KEY=your_google_ai_api_key
+MONGODB_URI=
+NEXT_AUTH_SECRET=
+GOOGLE_GEMINI_API_KEY=
+NEXTAUTH_SECRET=
+UPLOADTHING_TOKEN=
+UPLOADTHING_APP_ID=
+EMAIL_USER = 
+EMAIL_PASS = 
+
    ```
 
 4. **Run the development server:**
@@ -130,7 +133,8 @@ Please read our [Contributing Guide](CONTRIBUTING.md) for more details.
 
 ## ⚠️ Known Issues
 
-- **Resend API Email Verification**: There are some errors in getting the verification code to the user because the Resend API does not allow the use of public free domains for their email verification services. Other than that, the app is good to go!
+- **Issue with vercel**
+There are some issues while logging in first time and want to access the birthday card the image upload is not working on first try 
 
 ---
 
@@ -144,7 +148,7 @@ A big thank you to the following technologies and platforms that made this proje
 - [shadcn UI](https://ui.shadcn.com/)
 - [NextAuth.js](https://next-auth.js.org/)
 - [MongoDB](https://www.mongodb.com/)
-- [Resend](https://resend.com/)
+- [Nodemailer](https://nodemailer.com/)
 - [Google AI](https://ai.google.dev/)
 
 ---
