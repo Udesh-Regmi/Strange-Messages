@@ -95,7 +95,7 @@ const DashboardPage = () => {
 
 
     const handleDeleteMessage = (messageId: string) => {
-        setMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
+        setMessages((prevMessages) => prevMessages.filter((message) => message._id.toString() !== messageId));
     };
 
     const fetchAcceptMessage = useCallback(async () => {
@@ -356,7 +356,7 @@ const DashboardPage = () => {
             messages.length > 0 ? (
                 messages.map((message) => (
                     <MessageCard
-                        key={message._id as string}
+                        key={message._id as unknown as string}
                         message={message}
                         onMessageDelete={handleDeleteMessage}
                     />
